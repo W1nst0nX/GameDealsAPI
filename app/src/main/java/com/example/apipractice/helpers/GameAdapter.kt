@@ -1,5 +1,6 @@
 package com.example.apipractice.helpers
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.apipractice.R
+import com.example.apipractice.activities.DetailActivity
 import com.example.apipractice.models.GameDeals
 import com.squareup.picasso.Picasso
 
@@ -48,6 +50,11 @@ class GameAdapter(private val countriesList: List<GameDeals>) :RecyclerView.Adap
             tvTitle.text = deals.title
             tvOGPrice.text = normal
             tvSalePrice.text = sale
+            itemView.setOnClickListener {
+                val clickedGame = Intent(itemView.context, DetailActivity::class.java)
+                clickedGame.putExtra(DetailActivity.EXTRA_DEAL, deals)
+                itemView.context.startActivity(clickedGame)
+            }
             Picasso.get().load(deals.thumb).into(imageView)
         }
 

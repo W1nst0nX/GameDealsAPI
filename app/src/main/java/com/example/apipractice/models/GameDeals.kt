@@ -1,5 +1,9 @@
 package com.example.apipractice.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class GameDeals(
         val internalName: String,
         val title: String,
@@ -20,4 +24,4 @@ data class GameDeals(
         val lastChange: Int,
         val dealRating: Double,
         val thumb: String
-)
+) : Parcelable
